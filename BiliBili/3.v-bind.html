@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+        
+        .pink {
+            color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <h1 v-bind:class="{red:isred,pink:ispink}">{{message}}</h1> -->
+        <h1 v-bind:class="twoBtn()">{{message}}</h1>
+        <button @click='btn'>红色</button>
+    </div>
+
+
+    <script src="./vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '变一下~',
+                isred: true,
+                ispink: false,
+            },
+            methods: {
+                btn: function() {
+                    this.isred = !this.isred
+                },
+                twoBtn: function() {
+                    return {
+                        red: this.isred,
+                        pink: this.ispink
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
